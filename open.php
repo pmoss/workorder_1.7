@@ -60,7 +60,10 @@ if($ticket
     //Hide ticket number -  it should only be delivered via email for security reasons.
     echo Format::safe_html($ticket->replaceVars(str_replace(
                     array('%{ticket.number}', '%{ticket.extId}', '%{ticket}'), //ticket number vars.
-                    array_fill(0, 3, 'XXXXXX'),
+//Added 2014-01-20 3:15 pm
+                    //array_fill(0, 3, 'XXXXXX'),
+                    $ticket->getExtID(),
+//End Added
                     $page->getBody()
                     )));
 } else {
